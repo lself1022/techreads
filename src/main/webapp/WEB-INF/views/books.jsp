@@ -12,7 +12,7 @@
                 <c:forEach var="book" items="${books}">
                     <tr>
                         <td><img src="<c:out value="${book.coverURL}" />" align="middle" height="50" width="50" /></td>
-                        <td><c:out value="${book.title}" /></td>
+                        <td><a href="/books/<c:out value="${book.id}" />"><c:out value="${book.title}" /></a></td>
                     </tr>
                 </c:forEach>
             </table>

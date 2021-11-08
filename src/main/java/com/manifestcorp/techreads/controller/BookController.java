@@ -5,6 +5,7 @@ import com.manifestcorp.techreads.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -25,6 +26,15 @@ public class BookController {
         ModelAndView mav = new ModelAndView("books");
         List<Book> books = bookRepository.findAll();
         mav.addObject("books", books);
+        return mav;
+    }
+
+    @RequestMapping("/{bookID}")
+    public ModelAndView bookDetail(@PathVariable(value="bookID") String id) {
+        Long bookId = Long.valueOf(id);
+        ModelAndView mav = new ModelAndView("bookDetail");
+        Book book = bookRepository.getById(bookId);
+        mav.addObject("book", book);
         return mav;
     }
 
