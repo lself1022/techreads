@@ -7,11 +7,15 @@
         <a href="<c:url value="/books/add" />">Add Books</a>
 
         <c:if test="${not empty books}">
-            <ul>
+            <table>
+
                 <c:forEach var="book" items="${books}">
-                    <li><c:out value="${book.title}" /></li>
+                    <tr>
+                        <td><img src="<c:out value="${book.coverURL}" />" align="middle" height="50" width="50" /></td>
+                        <td><c:out value="${book.title}" /></td>
+                    </tr>
                 </c:forEach>
-            </ul>
+            </table>
         </c:if>
     </body>
 
