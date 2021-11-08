@@ -7,6 +7,7 @@
         <h1>Add Book</h1>
 
         <form:form method="post" modelAttribute="bookForm" action="${pageContext.request.contextPath}/books">
+            <form:input path="id" type="hidden" />
             Title: <form:input path="title" type="text" /><br>
             Cover URL: <form:input path="coverURL" type="text" /><br>
             Author: <form:input path="author" type="text" /><br>

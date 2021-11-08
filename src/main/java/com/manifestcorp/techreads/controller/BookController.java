@@ -49,4 +49,12 @@ public class BookController {
         bookRepository.saveAndFlush(book);
         return new RedirectView("books");
     }
+
+    @RequestMapping("/edit/{bookID}")
+    public String edit(Model model, @PathVariable(value="bookID") String id) {
+        Long bookId = Long.valueOf(id);
+        Book book = bookRepository.getById(bookId);
+        model.addAttribute("bookForm", book);
+        return "add";
+    }
 }
