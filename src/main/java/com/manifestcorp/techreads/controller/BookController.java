@@ -57,4 +57,11 @@ public class BookController {
         model.addAttribute("bookForm", book);
         return "add";
     }
+
+    @RequestMapping("/delete/{bookID}")
+    public RedirectView delete(@PathVariable(value="bookID") String id) {
+        Long bookId = Long.valueOf(id);
+        bookRepository.deleteById(bookId);
+        return new RedirectView("/books", true);
+    }
 }
