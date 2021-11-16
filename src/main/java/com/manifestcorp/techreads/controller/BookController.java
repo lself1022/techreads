@@ -41,13 +41,14 @@ public class BookController {
     @RequestMapping("/add")
     public String add(Model model) {
         model.addAttribute("bookForm", new Book());
+        model.addAttribute("addOrEdit", "Add");
         return "add";
     }
 
     @RequestMapping(value={"","/"}, method = POST)
     public RedirectView addBook(Book book) {
-        bookRepository.saveAndFlush(book);
-        return new RedirectView("books");
+        Book newBook = bookRepository.saveAndFlush(book);
+        return new RedirectView("/books/" + newBook.getId());
     }
 
     @RequestMapping("/edit/{bookID}")
@@ -55,6 +56,7 @@ public class BookController {
         Long bookId = Long.valueOf(id);
         Book book = bookRepository.getById(bookId);
         model.addAttribute("bookForm", book);
+        model.addAttribute("addOrEdit", "Edit");
         return "add";
     }
 

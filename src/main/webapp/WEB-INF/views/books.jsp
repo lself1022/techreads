@@ -2,21 +2,43 @@
 
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-    <body>
-        <h1>Books</h1>
-        <a href="<c:url value="/books/add" />">Add Books</a>
+<head>
+    <%@include file="../resources/head.html"%>
+</head>
 
-        <c:if test="${not empty books}">
-            <table>
+    <body class="container">
+    <%@include file="../resources/navbar.html"%>
+    <main>
 
+        <div class="row align-items-center justify-content-between">
+            <div class="col-sm-2">
+                <h1>Books</h1>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn btn-primary" href="<c:url value="/books/add" />"><i class="fas fa-plus"> Add Book</i></a>
+            </div>
+        </div>
+
+        <li class="row">
+
+            <c:if test="${not empty books}">
+            <ul class="list-group list-group-flush">
                 <c:forEach var="book" items="${books}">
-                    <tr>
-                        <td><img src="<c:out value="${book.coverURL}" />" align="middle" height="50" width="50" /></td>
-                        <td><a href="/books/<c:out value="${book.id}" />"><c:out value="${book.title}" /></a></td>
-                    </tr>
+
+                    <li class="list-group-item">
+                        <a href="/books/<c:out value="${book.id}" />">
+                            <img class="img-thumbnail" src="<c:out value="${book.coverURL}" />" align="middle" height="50" width="50" />
+                            <c:out value="${book.title}" />
+                        </a>
+                    </li>
+
                 </c:forEach>
-            </table>
-        </c:if>
+            </ul>
+
+            </c:if>
+
+            </div>
+    </main>
     </body>
 
 </html>
