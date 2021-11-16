@@ -27,4 +27,11 @@ public class BookApiController {
         return bookRepository.findById(bookId).orElse(new Book());
     }
 
+    @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
+    public Book createBook(@RequestBody Book newBook) {
+        return bookRepository.saveAndFlush(newBook);
+    }
+
+
+
 }
