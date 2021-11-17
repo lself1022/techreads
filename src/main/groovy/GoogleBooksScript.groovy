@@ -23,5 +23,5 @@ def sql = Sql.newInstance("jdbc:mysql://localhost:3306/techreads", "root", "root
 
 def booksTable = sql.dataSet("book")
 books.each {
-    booksTable.add(it)
+    booksTable.add(it as Map<String, Object>)
 }
