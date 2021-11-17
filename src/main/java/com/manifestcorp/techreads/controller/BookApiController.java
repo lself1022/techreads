@@ -6,9 +6,9 @@ import com.manifestcorp.techreads.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
@@ -23,8 +23,8 @@ public class BookApiController {
     }
 
     @GetMapping("/{id}")
-    public Book findById(@PathVariable Long id) {
-        return bookRepository.findById(id).orElse(new Book());
+    public Optional<Book> findById(@PathVariable Long id) {
+        return bookRepository.findById(id);
     }
 
     @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
