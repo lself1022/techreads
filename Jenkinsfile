@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh './mvnw package -DskipTests'
+                sh 'chmod +x mvnw && ./mvnw package -DskipTests'
             }
         }
         stage('Test') {
