@@ -17,7 +17,7 @@ public class BookApiController {
     @Autowired
     BookRepository bookRepository;
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public List<Book> findAll() {
        return bookRepository.findAll();
     }

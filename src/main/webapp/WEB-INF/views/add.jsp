@@ -39,7 +39,7 @@
             </div>
             <div class="mb-3">
                 <label for="rating" class="form-label">Rating</label>
-                <form:input class="form-control" name="rating" path="rating" type="text" />
+                <form:input class="form-control" name="rating" path="rating" type="number" min="0" max="5" step="0.1" />
             </div>
             <div class="row">
                 <div class="col-sm-2">
