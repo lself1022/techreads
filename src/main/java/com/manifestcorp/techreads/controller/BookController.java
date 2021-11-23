@@ -22,6 +22,7 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
+
     @RequestMapping({"","/"})
     public ModelAndView books() {
         ModelAndView mav = new ModelAndView("books");
@@ -47,8 +48,7 @@ public class BookController {
     }
 
     @RequestMapping(value={"","/"}, method = POST)
-    public RedirectView addBook(Book book, BindingResult bindingResult) {
-
+    public RedirectView addBook(Book book) {
         Book newBook = bookRepository.saveAndFlush(book);
         return new RedirectView("/books/" + newBook.getId());
     }
