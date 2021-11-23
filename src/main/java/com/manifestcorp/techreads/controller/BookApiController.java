@@ -34,9 +34,9 @@ public class BookApiController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable Long id, @RequestBody Book book) {
+    public Book update(@PathVariable Long id, @RequestBody Book book) {
         book.setId(id);
-        bookRepository.saveAndFlush(book);
+        return bookRepository.saveAndFlush(book);
     }
 
     @DeleteMapping("/{id}")
